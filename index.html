@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FIXED</title>
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+
+<body>
+    <header>
+    </header>
+    <section>
+        <div class="content">
+            <div class="main-content"></div>
+            <div class="side-content">
+                <div class="side-catalog">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+    </footer>
+    <script src="public/lib/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            var documentHeight = $(document).height();
+            var footerHeight = $(".side-catalog").height();
+
+            if (scrollTop <= $(window).height()) {
+                $(".side-catalog").css({
+                    visibility: "hidden"
+                });
+            } else {
+                $(".side-catalog").css({
+                    visibility: "visible"
+                });
+                if (scrollTop >= documentHeight - windowHeight - footerHeight) {
+                    var bottom = scrollTop - (documentHeight - windowHeight - footerHeight);
+                    // console.log(bottom);
+                    $(".side-catalog").css({
+                        bottom: bottom + "px"
+                    });
+                }
+            }
+        });
+    })
+    </script>
+</body>
+
+</html>
